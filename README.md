@@ -1,3 +1,6 @@
+## Live preview
+https://quiz-app-mern.onrender.com/
+
 # Deploying a MERN Stack Quiz App with Vite
 
 This repository contains a MERN (MongoDB, Express.js, React, Node.js) stack quiz application that is built using Vite, a fast and modern build tool for JavaScript.
