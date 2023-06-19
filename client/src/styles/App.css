@@ -47,8 +47,10 @@ body, html {
 
 .container .grid {
   margin-top: 3em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1em;
 }
 
 .container .btn {
