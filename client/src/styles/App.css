@@ -1,98 +1,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root{
+:root {
   --primary-color: #1F6E8C;
-  --dark-color:#222222;
+  --dark-color: #222222;
   --light-color: #f0f0f0;
 }
 
-body, html{
+body, html {
   height: "100vh";
-  background: var(--dark-color)
+  background: var(--dark-color);
 }
 
-* > *{
-    font-family: 'Poppins', sans-serif;
+* > * {
+  font-family: 'Poppins', sans-serif;
 }
 
-.container{
+.container {
   display: block;
   position: relative;
-  margin: 10px 250px;
-  height: auto;
-  width: 900px;
+  margin: 10px 20px;
   padding: 10px;
 }
 
-.container .title{
-    font-size: 3em;
-    text-align: center;
-    border: 5px solid var(--primary-color);
-    padding: .3em .2em;
-    border-radius: 4px;
+.container .title {
+  font-size: 3em;
+  text-align: center;
+  border: 5px solid var(--primary-color);
+  padding: .3em .2em;
+  border-radius: 4px;
 }
 
 .text-light {
-	color: var(--light-color)
+  color: var(--light-color);
 }
 
-.container ul{
+.container ul {
   list-style: none;
   margin: 0;
   padding: 0;
-	overflow: auto;
+  overflow: auto;
 }
 
-.container .questions{
-    padding: 1.5em;
+.container .questions {
+  padding: 1.5em;
 }
 
-
-.container .grid{
-    margin-top: 3em;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.container .grid {
+  margin-top: 3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-
-.container .btn{
-    padding: .2em 1.7em;
-    border: none;
-    border-radius: .1em;
-    font-size: 1.2em;
+.container .btn {
+  padding: .2em 1.7em;
+  border: none;
+  border-radius: .1em;
+  font-size: 1.2em;
 }
 
-.container .btn:hover{
-    cursor: pointer;
-    opacity: 0.7;
+.container .btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
-.next{
-    background-color: var(--primary-color);
-    justify-self: flex-end;
+.next {
+  background-color: var(--primary-color);
+  justify-self: flex-end;
 }
 
-.prev{
-    background-color: #73BBC9;
-    justify-self: flex-start;
+.prev {
+  background-color: #73BBC9;
+  justify-self: flex-start;
 }
 
-ul li{
+ul li {
   color: #AAAAAA;
   display: block;
   position: relative;
   float: left;
   width: 100%;
   height: 100px;
-	border-bottom: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 
-ul li input[type=radio]{
+ul li input[type=radio] {
   position: absolute;
   visibility: hidden;
 }
 
-ul li label{
+ul li label {
   display: block;
   position: relative;
   font-weight: 300;
@@ -103,13 +99,14 @@ ul li label{
   z-index: 9;
   cursor: pointer;
   -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
 }
 
-ul li:hover label{
-	color: #FFFFFF;
+ul li:hover label {
+  color: #FFFFFF;
 }
 
-ul li .check{
+ul li .check {
   display: block;
   position: absolute;
   border: 5px solid #AAAAAA;
@@ -118,9 +115,9 @@ ul li .check{
   width: 25px;
   top: 30px;
   left: 20px;
-	z-index: 5;
-	transition: border .25s linear;
-	-webkit-transition: border .25s linear;
+  z-index: 5;
+  transition: border .25s linear;
+  -webkit-transition: border .25s linear;
 }
 
 ul li:hover .checked {
@@ -130,35 +127,66 @@ ul li:hover .checked {
 ul li .check::before {
   display: block;
   position: absolute;
-	content: '';
+  content: '';
   border-radius: 100%;
   height: 15px;
   width: 15px;
   top: 5px;
-	left: 5px;
+  left: 5px;
   margin: auto;
-	transition: background 0.25s linear;
-	-webkit-transition: background 0.25s linear;
+  transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
 }
-
-
 input[type=radio]:checked ~ .check {
-  border: 5px solid var(--primary-color)
+  border: 5px solid var(--primary-color);
 }
 
-input[type=radio]:checked ~ .check::before{
-  background: var(--primary-color)
+input[type=radio]:checked ~ .check::before {
+  background: var(--primary-color);
 }
 
-input[type=radio]:checked ~ .text-primary{
-  color: var(--primary-color)
+input[type=radio]:checked ~ .text-primary {
+  color: var(--primary-color);
 } 
 
-/* To get selected option we are using this checked class */
 .checked {
   border: 5px solid var(--primary-color) !important;
 }
 
-.checked::before{
-  background: var(--primary-color)
-} 
+.checked::before {
+  background: var(--primary-color);
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 10px;
+  }
+
+  .container .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    margin: 5px;
+  }
+
+  .container .title {
+    font-size: 2.5em;
+  }
+
+  ul li label {
+    font-size: 1.2em;
+    padding: 20px 20px 20px 60px;
+  }
+
+  ul li .check {
+    height: 20px;
+    width: 20px;
+    top: 25px;
+    left: 15px;
+  }
+}
