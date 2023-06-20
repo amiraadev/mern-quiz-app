@@ -50,6 +50,30 @@ export async function postServerData(url, result, callback) {
     }
   }
 
+  export function getWrongAnswers(result, answers, callback) {
+    const wrongAnswers = result.map((element, i) => {
+      if (answers[i] !== element) {
+        return { right: element, wrong: answers[i], index: i };
+      } else {
+        return null; // Add a null value for correct answers
+      }
+    }).filter(answer => answer !== null); // Filter out null values
+  
+    return callback ? callback(wrongAnswers) : wrongAnswers;
+  }
+  
+
+  export function getWrongAnswersWithDetails(wrongAnsweredQuestions, wrongAnswers, callback) {
+    const finalResult = wrongAnsweredQuestions.map((element, i) => {
+   
+        return { ...element, wrongAnswer: wrongAnswers[i].wrong, rightAnswer: wrongAnswers[i].right };
+
+  }).filter(answer => answer !== null); // Filter out null values
+  
+    return callback ? callback(finalResult) : finalResult;
+  }
+  
+
 
 
    
