@@ -17,7 +17,7 @@ function onNext(){
       dispatch(moveNextVerif());
     } else {
       dispatch(resetTraceVerif())
-      navigate('/result', { replace: true });
+      navigate('/finalPage', { replace: true });
     }
 }
 
