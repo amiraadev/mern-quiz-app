@@ -6,6 +6,7 @@ import Principal from './Principal'
 import Quiz from './Quiz'
 import Result from './Result'
 import {CheckUserExist} from '../helper/helper'
+import Verify from './Verify'
 
 
 function App() {
@@ -22,6 +23,11 @@ function App() {
     {
       path:"/result",
       element:<CheckUserExist><Result /></CheckUserExist>
+    },
+    {
+      path:"/verify",
+      // element:<Verify />
+       element:<CheckUserExist><Verify /></CheckUserExist>
     },
   ])
 
