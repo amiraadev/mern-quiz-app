@@ -7,6 +7,7 @@ import Quiz from './Quiz'
 import Result from './Result'
 import {CheckUserExist} from '../helper/helper'
 import Verify from './Verify'
+import FinalPage from './FinalPage'
 
 
 function App() {
@@ -28,6 +29,11 @@ function App() {
       path:"/verify",
       // element:<Verify />
        element:<CheckUserExist><Verify /></CheckUserExist>
+    },
+    {
+      path:"/finalPage",
+      // element:<Verify />
+       element:<CheckUserExist><FinalPage /></CheckUserExist>
     },
   ])
 
