@@ -105,7 +105,7 @@ ul li label {
 }
 
 ul li:hover label {
-  color: #FFFFFF;
+  /* color: #FFFFFF; */
 }
 
 ul li .check {
@@ -149,14 +149,34 @@ input[type=radio]:checked ~ .check::before {
 
 input[type=radio]:checked ~ .text-primary {
   color: var(--primary-color);
+  /* color: blue; */
+}
+
+
+
+.right-answer {
+  color:#1CAC78;
+} 
+
+.wrong-answer {
+  color: #E52B50;
 } 
 
 .checked {
   border: 5px solid var(--primary-color) !important;
 }
+.checked-wrong {
+  /* border: 5px solid var(--primary-color) !important; */
+  border: 5px solid #E52B50 !important;
+}
 
 .checked::before {
   background: var(--primary-color);
+}
+
+.wrong-checked.checked::before {
+  /* background: var(--primary-color); */
+  background: #E52B50;
 }
 
 /* Responsive Styles */
