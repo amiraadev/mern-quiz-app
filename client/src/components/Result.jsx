@@ -1,23 +1,20 @@
 import '../styles/Result.css'
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import ResultTable from './ResultTable'
 import { useDispatch ,useSelector} from 'react-redux';
-import {attemptsNumber,earnPointsNumber,flagResult } from '../helper/helper';
+import {attemptsNumber,earnPointsNumber,flagResult, getWrongAnswers, getWrongAnswersWithDetails } from '../helper/helper';
 
 import {resetAllAction} from '../redux/questionReducer'
 import {resetResultAction} from '../redux/resultReducer'
-import { useEffect } from 'react';
 import { usePublishResult } from '../hooks/setResult';
+import { startVerification } from '../redux/wrongAnswerReducer';
 
 
 function Result() {
   const dispatch=useDispatch();
   const {questions:{queue,answers},result:{result,userId}} = useSelector(state => state)
 
-  useEffect(() => {
-    // console.log(result)
-    //  console.log(earnPoints)
-  })
+  
 
   const totalPoints = queue.length*10;
   const attempts = attemptsNumber(result)
@@ -36,6 +33,22 @@ usePublishResult({result,
   function onRestart() {
     dispatch(resetAllAction());
     dispatch(resetResultAction());
+  }
+
+  const wrongAnswers= getWrongAnswers(answers,result,data => data)
+  const wrongAnsweredQuestions = queue.filter((quest,i) => getWrongAnswers(answers,result,data => data)
+                                      .map((element) => (element.index))
+                                      .includes(i))
+
+  const finalResult = getWrongAnswersWithDetails(wrongAnsweredQuestions,wrongAnswers,data => data);
+
+ 
+
+  const navigate = useNavigate();
+
+  function onVerify() {
+    dispatch(startVerification({ question: finalResult }));
+    navigate('/verify', { replace: true });
   }
 
   return (
@@ -76,13 +89,10 @@ usePublishResult({result,
 
                       <div className="start">
                         <Link className="btn" to={'/'} onClick={onRestart}>Restart</Link>
+                        <button className="btn"  style={{ background: '#1F6E8C' }} onClick={onVerify}> Verify</button>
                       </div>
 
-                      
-
-                  </div>    
-
-                           
+                  </div>                           
                   <div >
                   <ResultTable></ResultTable>
                   </div>
